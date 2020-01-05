@@ -101,6 +101,9 @@ int main(int argc, char *argv[])
                 terminal_height = (glong)json_object_get_int_member(header, "height");
 
             vte_terminal_set_size(VTE_TERMINAL(term), terminal_width, terminal_height);
+
+            if (json_object_has_member(header, "title"))
+                gtk_window_set_title(GTK_WINDOW(window), json_object_get_string_member(header, "title"));
         } else {
             JsonArray *command;
 
